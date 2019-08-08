@@ -17,9 +17,7 @@ module.exports = {
       "error",
       {
         singleQuote: true,
-        semi: false,
-        trailingComma: "all",
-        jsxBracketSameLine: true
+        semi: true,
       }
     ]
   }

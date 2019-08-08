@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from "react";
-import { List, Avatar, Icon } from "antd";
-import { post } from "./common/util/request";
+import React, { useState, useEffect } from 'react';
+import { List, Avatar, Icon } from 'antd';
+import { post, get } from './common/util/request';
 
-import InfiniteScroll from "react-infinite-scroller";
-import "./App.css";
+import InfiniteScroll from 'react-infinite-scroller';
+import './App.css';
 
 function App({ id = 186016, type = 0, limit = 10 }) {
   const [list, setList] = useState([]);
@@ -15,7 +15,7 @@ function App({ id = 186016, type = 0, limit = 10 }) {
   useEffect(() => {
     const fetchData = async () => {
       setLoading(true);
-      let res = await post(`/comment/hot`, {
+      let res = await post('/comment/hot', {
         id: id,
         offset: offset,
         before: before,
@@ -25,6 +25,8 @@ function App({ id = 186016, type = 0, limit = 10 }) {
       setHasMore(res.hasMore);
       setList(pre => [...pre, ...res.hotComments]);
       setLoading(false);
+      let rt = await get('/rt.json');
+      console.log(rt);
     };
     fetchData();
     // 没有依赖 before, before 改变时不会重新请求
@@ -32,7 +34,7 @@ function App({ id = 186016, type = 0, limit = 10 }) {
 
   const loadMore = () => {
     setOffset(list.length);
-    setBefore(list[list.length -1].time)
+    setBefore(list[list.length - 1].time);
   };
 
   return (
