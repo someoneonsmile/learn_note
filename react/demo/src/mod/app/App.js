@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { List, Avatar, Icon } from 'antd';
-import { post, get } from './common/util/request';
+import { post, get } from '../../common/util/request';
 
 import InfiniteScroll from 'react-infinite-scroller';
 import './App.css';
+import '../../mock/mock';
 
 function App({ id = 186016, type = 0, limit = 10 }) {
   const [list, setList] = useState([]);
@@ -29,7 +30,6 @@ function App({ id = 186016, type = 0, limit = 10 }) {
       console.log(rt);
     };
     fetchData();
-    // 没有依赖 before, before 改变时不会重新请求
   }, [id, offset, limit, type, before]);
 
   const loadMore = () => {

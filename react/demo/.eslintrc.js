@@ -12,12 +12,13 @@ module.exports = {
     "no-debugger": process.env.NODE_ENV === "production" ? 2 : 0,
     "no-console": process.env.NODE_ENV === "production" ? 2 : 0,
     "babel/no-unused-expressions": "error",
-    "no-unused-expressions": "off",
+    "no-unused-expressions": ["error", { allowShortCircuit: true }],
+    "no-unused-vars": ["error"],
     "prettier/prettier": [
       "error",
       {
         singleQuote: true,
-        semi: true,
+        semi: true
       }
     ]
   }
