@@ -1,18 +1,24 @@
-import React from 'react';
+import React, { lazy, Suspense } from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './mod/app/App';
 import * as serviceWorker from './serviceWorker';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { Spin } from 'antd';
 
+const App = lazy(() => import('./mod/app/App'));
+
+// 路由页
+// 布局也写到该页
 ReactDOM.render(
-  <Router>
-    <Switch>
-      <Route exact path="/" component={Home} />
-      <Route path="/list" component={App} />
-      <Route component={NoMatch} />
-    </Switch>
-  </Router>,
+  <Suspense fallback={<Spin />}>
+    <Router>
+      <Switch>
+        <Route exact path="/" component={Home} />
+        <Route path="/list" component={App} />
+        <Route component={NoMatch} />
+      </Switch>
+    </Router>
+  </Suspense>,
   document.getElementById('root')
 );
 
