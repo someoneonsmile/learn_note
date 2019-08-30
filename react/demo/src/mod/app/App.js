@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { List, Avatar, Icon } from 'antd';
-import { post, get } from '../../common/util/request';
+import { List, Icon, Avatar } from 'antd';
+import { post } from '../../common/util/request';
 
 import InfiniteScroll from 'react-infinite-scroller';
 import './App.css';
 import '../../mock/mock';
 
-function App({ id = 186016, type = 0, limit = 10 }) {
+function App({ id = 33337113, type = 0, limit = 10 }) {
   const [list, setList] = useState([]);
   const [offset, setOffset] = useState(0);
   const [before, setBefore] = useState(null);
@@ -26,8 +26,6 @@ function App({ id = 186016, type = 0, limit = 10 }) {
       setHasMore(res.hasMore);
       setList(pre => [...pre, ...res.hotComments]);
       setLoading(false);
-      let rt = await get('/rt.json');
-      console.log(rt);
     };
     fetchData();
   }, [id, offset, limit, type, before]);
@@ -53,7 +51,7 @@ function App({ id = 186016, type = 0, limit = 10 }) {
           <List.Item
             key={item.commentId}
             actions={[
-              <IconText type="star-o" text={item.likedCount} />,
+              <IconText type="star-o" text={item.startCount} />,
               <IconText type="like-o" text={item.likedCount} />
             ]}
             extra={<img width={272} alt="logo" src={item.user.avatarUrl} />}

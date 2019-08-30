@@ -6,7 +6,13 @@ import axios from 'axios';
  * @param {*} data
  */
 export function get(url, data) {
-  return axios.get(url, data).then(res => res.data);
+  return axios
+    .get(url, data)
+    .then(res => res.data)
+    .then(data => {
+      console.log(data);
+      return data;
+    });
 }
 
 /**
@@ -15,5 +21,11 @@ export function get(url, data) {
  * @param {*} data
  */
 export function post(url, data) {
-  return axios.post(url, data).then(res => res.data);
+  return axios
+    .post(url, data)
+    .then(res => res.data)
+    .then(data => {
+      console.log(data);
+      return data;
+    });
 }
