@@ -4,7 +4,7 @@ import { post } from '../../common/util/request';
 
 import InfiniteScroll from 'react-infinite-scroller';
 import './App.css';
-import './mock';
+// import './mock';
 
 function App({ id = 33337113, type = 0, limit = 10 }) {
   const [list, setList] = useState([]);
