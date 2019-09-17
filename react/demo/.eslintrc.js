@@ -10,7 +10,7 @@ module.exports = {
   rules: {
     quotes: ["error", "single"],
     "no-debugger": process.env.NODE_ENV === "production" ? 2 : 0,
-    "no-console": process.env.NODE_ENV === "production" ? 2 : 0,
+    "no-console": process.env.NODE_ENV === "production" ? 0 : 0,
     "babel/no-unused-expressions": "error",
     "no-unused-expressions": ["error", { allowShortCircuit: true }],
     "no-unused-vars": ["error"],

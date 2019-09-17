@@ -4,6 +4,8 @@ const {
   useBabelRc,
   useEslintRc
 } = require('customize-cra');
+const rewireUglifyjs = require('react-app-rewire-uglifyjs');
+
 module.exports = override(
   fixBabelImports('import', {
     libraryName: 'antd',
@@ -11,5 +13,6 @@ module.exports = override(
     style: 'css'
   }),
   useBabelRc(),
-  useEslintRc()
+  useEslintRc(),
+  rewireUglifyjs
 );

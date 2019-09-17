@@ -1,7 +1,7 @@
 import {
   // setup,
-  mock,
-  Random
+  mock
+  // Random
   // valid
 } from 'mockjs';
 
@@ -28,7 +28,8 @@ mock('/comment/hot', {
         expertTags: null,
         remarkName: null,
         authStatus: 0,
-        avatarUrl: () => Random.image('200x200', Random.hex(), Random.cword()),
+        // avatarUrl: () => Random.image('200x200', Random.hex(), Random.cword()),
+        avatarUrl: 'https://placem.at/people?w=200&h=200&random=@string',
         experts: null
       },
       beReplied: [],

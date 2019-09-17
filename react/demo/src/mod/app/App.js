@@ -4,7 +4,7 @@ import { post } from '../../common/util/request';
 
 import InfiniteScroll from 'react-infinite-scroller';
 import './App.css';
-import '../../mock/mock';
+import './mock';
 
 function App({ id = 33337113, type = 0, limit = 10 }) {
   const [list, setList] = useState([]);
@@ -46,7 +46,7 @@ function App({ id = 33337113, type = 0, limit = 10 }) {
         itemLayout="vertical"
         size="large"
         dataSource={list}
-        loading={loading}
+        loading={loading} // 注释掉显示骨架屏
         renderItem={item => (
           <List.Item
             key={item.commentId}
@@ -56,12 +56,14 @@ function App({ id = 33337113, type = 0, limit = 10 }) {
             ]}
             extra={<img width={272} alt="logo" src={item.user.avatarUrl} />}
           >
+            {/* <Skeleton loading={loading} active avatar> */}
             <List.Item.Meta
               avatar={<Avatar src={item.user.avatarUrl} />}
               title={item.user.nickname}
               description={item.content}
             />
             {item.content}
+            {/* </Skeleton> */}
           </List.Item>
         )}
       />
