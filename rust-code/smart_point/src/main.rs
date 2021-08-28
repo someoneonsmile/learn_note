@@ -27,6 +27,16 @@ fn main() {
     // std::mem::drop, 位于 prelude
     // 手动提早释放, 会自动调用析构函数
     drop(x);
+
+    // 也会触发 drop 函数
+    // let _ = MyBox::new(String::from("rust"));
+    // MyBox::new(String::from("rust"));
+
+
+    // 不会触发 drop 函数
+    // let a = MyBox::new(String::from("rust"));
+    // let _ = a;
+
     println!("end!");
 }
 
